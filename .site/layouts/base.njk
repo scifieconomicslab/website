@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-palette="{{ palettes.default }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% if title and page.url != '/' %}{{ title }} · {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ summary or site.tagline }}">
+<link rel="stylesheet" href="{{ page.url | root }}assets/css/tokens.css">
+<link rel="stylesheet" href="{{ page.url | root }}assets/css/site.css">
+<script>
+/* apply the saved palette before first paint */
+(function(){try{var p=new URLSearchParams(location.search).get('palette')||localStorage.getItem('lab-palette');
+if(!p&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)p='ledger';
+var ok={ {% for q in palettes.palettes %}'{{ q.id }}':1{% if not loop.last %},{% endif %}{% endfor %} };
+if(p&&ok[p])document.documentElement.setAttribute('data-palette',p);}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="logo" href="{{ '/' | rel(page.url) }}"><i>Sci-Fi</i> Economics Lab</a>
+  <nav aria-label="Main">
+    <a href="{{ '/' | rel(page.url) }}#run">Run the town</a>
+    <a href="{{ '/' | rel(page.url) }}#method">How we work</a>
+    <a href="{{ '/heritage/' | rel(page.url) }}"{% if page.url == '/heritage/' %} aria-current="page"{% endif %}>Heritage</a>
+    <a href="{{ '/work/' | rel(page.url) }}"{% if page.url == '/work/' %} aria-current="page"{% endif %}>Our work</a>
+    <a href="{{ '/' | rel(page.url) }}#join">Work with us</a>
+    <a href="{{ '/people/' | rel(page.url) }}"{% if page.url == '/people/' %} aria-current="page"{% endif %}>People</a>
+  </nav>
+</div></header>
+<main id="main">
+{{ content | safe }}
+</main>
+<footer class="foot"><div class="wrap">
+  <div>Sci-Fi Economics Lab · prototype v3 · all numbers in the town model are invented</div>
+  <div><a href="mailto:{{ site.contact }}">{{ site.contact }}</a> · <a href="https://edgeryders.eu/t/economic-science-fiction-a-selection-of-works-and-authors/8582">Wiki</a> · <a href="https://scifiworldbuilding.netlify.app/">Witness</a> · <a href="{{ site.edgeryders }}">Edgeryders</a> · {% if page.inputPath %}<a href="{{ page | editUrl(site) }}">Edit this page</a>{% endif %}</div>
+  <div class="pal" id="pal"></div>
+</div></footer>
+<script id="palettes-data" type="application/json">{{ palettes | json | safe }}</script>
+<script src="{{ page.url | root }}assets/js/palette.js" data-root="{{ page.url | root }}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

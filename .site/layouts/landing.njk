@@ -1,0 +1,162 @@
+---
+layout: base.njk
+---
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">{{ eyebrow }}</div>
+    <h1>{{ hero_title }}</h1>
+    <p class="lede">{{ hero_lede }}</p>
+    <ul>{% for p in hero_points %}<li>{{ p }}</li>{% endfor %}</ul>
+    <div class="btns"><a class="btn" href="#run">Run the town</a><a class="btn alt" href="mailto:{{ site.contact }}?subject=A%20town%20and%20a%20problem">Bring us a town</a></div>
+  </div>
+  <div class="fig" id="figbox">
+    <iframe id="fig" title="{{ site.town_name }}, a small town you can run" loading="eager"></iframe>
+    <div class="badge">{{ site.town_name }} · a toy town</div>
+    <div class="cap">drag to turn · scroll to zoom</div>
+    <div class="ticker lower3" role="region" aria-label="News from {{ site.town_name }}">
+      <div class="mast">The {{ site.town_name }}<br>Courier</div>
+      <div class="feed"><div class="now" id="tickNow" aria-live="polite">Opening the paper</div><div class="hist" id="tickHist"></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="deck" id="run" aria-label="Run the town"><div class="wrap">
+  <div class="eyebrow">Run the town</div>
+  <div class="deck-grid">
+    <div class="panel" id="controls">
+      <h3>You decide</h3>
+      <div class="ctl"><label for="rent">Average rent <b id="vRent">30</b></label><input id="rent" type="range" min="15" max="60" step="1" value="30"><div class="sub" id="rentSub">coins a month, about 30% of the average wage</div></div>
+      <div class="ctl"><label for="tax">Income tax <b id="vTax">20%</b></label><input id="tax" type="range" min="0" max="50" step="1" value="20"><div class="sub">taken from wages, rents and dividends alike</div></div>
+      <h3 style="margin-top:22px">One budget, five claims</h3>
+      <div id="pool"></div>
+      <div class="stack" id="stack" aria-hidden="true"></div>
+      <div class="hint" id="poolHint">Raise one and the others give way. The lock keeps a share fixed. The pool is whatever tax raises each month.</div>
+    </div>
+
+    <div class="midcol">
+      <div class="panel" id="now">
+        <h3>The town now</h3>
+        <div class="mood"><div class="n" id="mood">50</div><div class="w" id="moodW">Getting by</div><div class="d">Mood, out of 100</div><div class="bar"><i id="moodBar" style="width:50%"></i></div></div>
+        <dl class="stats" id="stats"></dl>
+      </div>
+      <div class="panel flow" id="flow">
+        <h3>Follow the change</h3>
+        <div id="flowMap"></div>
+        <p class="hint" id="flowPrev"></p>
+      </div>
+    </div>
+
+    <div class="panel" id="outside">
+      <h3>Outside your control</h3>
+      <div class="ctl"><label>Weather <b id="wLbl">settled</b></label><div class="meter" aria-hidden="true"><i id="wMeter"></i></div><div class="sub">dry left, wet right</div></div>
+      <div class="ctl"><label>Market <b id="mLbl">normal</b></label><div class="meter" aria-hidden="true"><i id="mMeter"></i></div><div class="sub">freight and orders from outside</div></div>
+      <div class="ev" id="events">
+        <button data-ev="drought">Drought<small>output and exports dip</small></button>
+        <button data-ev="storm">Storm<small>roads and lamps damaged</small></button>
+        <button data-ev="bumper">Bumper harvest<small>a good year</small></button>
+        <button data-ev="cargo">Ship leaves<small>exports fall for a year</small></button>
+      </div>
+      <div class="clock">
+        <span class="t" id="clock">Year 1 · Month 1</span>
+        <button id="play" aria-pressed="true">Pause</button>
+        <button data-speed="1" aria-pressed="true">1x</button><button data-speed="2" aria-pressed="false">2x</button><button data-speed="4" aria-pressed="false">4x</button>
+        <button id="restart">Restart</button>
+      </div>
+      <div class="clock" style="border:0;margin-top:6px;padding-top:0">
+        <label for="scenario" class="hint">Weather deck</label>
+        <select id="scenario"><option value="random">Random</option><option value="hard">A hard decade</option><option value="calm">Calm</option></select>
+        <span class="hint" id="seedLbl"></span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="charts">
+    <figure class="panel chart"><figcaption>People and jobs</figcaption><div id="chartA"></div><div class="legend" id="legA"></div></figure>
+    <figure class="panel chart"><figcaption>Public services, 1.0 is the starting level</figcaption><div id="chartB"></div><div class="legend" id="legB"></div></figure>
+  </div>
+
+  <div class="panel summary" id="summary" tabindex="-1"></div>
+
+  <details class="how"><summary>How this works</summary><div class="inner">{{ 'models/linden-cove.md' | noteBody(page.url) | safe }}</div></details>
+  <p class="toy">A toy model with invented numbers, built to show how the loops couple. A real place needs its own data; see <a href="{{ '/models/calibrating-a-real-place/' | rel(page.url) }}">how we would calibrate one</a>.</p>
+</div></section>
+
+<section class="provoke" id="why" aria-label="Why the Lab exists"><div class="wrap pgrid">
+  <div class="ptxt">
+    <div class="eyebrow">Why we exist</div>
+    <div class="ptext">{{ 'copy/opening-provocation.md' | noteBody(page.url) | safe }}</div>
+    <p class="pcta"><a class="btn alt" href="#method">See how we work</a></p>
+  </div>
+  <figure class="pfig"><img src="{{ 'assets/img/solarpunk-town.svg' | rel(page.url) }}" alt="A solarpunk town in balance, with green roofs, solar panels, a wind turbine, a tram, a pond and allotment beds" width="760" height="520" loading="lazy"><figcaption>The same town, with the loops closed</figcaption></figure>
+</div></section>
+
+<section class="funders" id="funders" aria-label="Funders and partners"><div class="wrap">
+  {% for group in [{ label: 'Funded by', items: funders.funders }, { label: 'With', items: funders.partners }] %}
+  <div class="fgroup"><div class="eyebrow">{{ group.label }}</div><ul>
+    {% for f in group.items %}{% set logo = f.id | funderLogo %}
+    <li><a href="{{ f.url }}" rel="noopener" title="{{ f.name }}">{% if logo %}<img src="{{ ('assets/funders/' + logo) | rel(page.url) }}" alt="{{ f.name }}" loading="lazy">{% if f.wordmark %}<span class="wordmark">{{ f.wordmark }}</span>{% endif %}{% else %}<span class="fname">{{ f.name }}</span>{% endif %}</a></li>
+    {% endfor %}
+  </ul></div>
+  {% endfor %}
+</div></section>
+
+<section class="method" id="method" aria-label="How we work with a place">
+  <div class="stick">
+    <div class="say"><div class="eyebrow">How we work</div><div class="mname">{{ 'copy/process-name.md' | noteBody(page.url) | safe }}</div><div class="cap" id="mcap"></div><div class="prog" id="mprog"></div></div>
+    <div class="mfig"><svg id="msvg" viewBox="0 0 1220 600" role="img" aria-label="Flowchart: a place chooses its economy"></svg><div class="mcard" id="mcard"></div></div>
+  </div>
+  <div class="wrap mstatic"><ol id="mlist"></ol></div>
+</section>
+
+<section class="s" id="work"><div class="wrap">
+  <div class="eyebrow">Our work</div>
+  <h2>Places, models and stories we have built</h2>
+  <p class="lead">Real places, real plans and invented futures. Each one says what we did and what it showed, and links to the original.</p>
+  <div class="cards">
+    {% for n in vault.featured %}
+    <a class="card" href="{{ n.url | rel(page.url) }}">
+      {% if n.type == 'work' %}<div class="wimg">{{ n.rel | workImage | safe }}</div>{% endif %}
+      <div class="meta"><span class="pill">{{ n.kind or n.type }}</span><span>{{ n.period or (n.start | year) }}</span></div>
+      <h3>{{ n.title }}</h3><p>{{ n.summary }}</p>
+      <div class="meta"><span class="pill {{ n.stage }}">{{ n.stage }}</span></div>
+    </a>
+    {% endfor %}
+  </div>
+  <p style="margin-top:22px"><a class="btn alt" href="{{ '/work/' | rel(page.url) }}">See all our work</a></p>
+</div></section>
+
+<section class="s alt" id="heritage"><div class="wrap">
+  <div class="eyebrow">Where our ideas come from</div>
+  <h2>A short family tree</h2>
+  <p class="lead">Economists, city thinkers and game designers whose ideas we build on. The tree is a set of small notes, so anyone on the team can add a branch.</p>
+  <div class="tree-wrap" id="treeTeaser" style="margin-top:24px"></div>
+  <p style="margin-top:18px"><a class="btn alt" href="{{ '/heritage/' | rel(page.url) }}">Open the full tree</a></p>
+</div></section>
+
+<section class="s" id="join"><div class="wrap">
+  <div class="eyebrow">Work with us</div>
+  <h2>Four ways to work with us</h2>
+  <div class="offers">
+    {% for o in vault.offers %}<div class="card"><h3>{{ o.title }}</h3><p>{{ o.summary }}</p></div>{% endfor %}
+  </div>
+  <p style="margin-top:26px"><a class="btn" href="mailto:{{ site.contact }}?subject=Working%20with%20the%20Lab">Write to us</a></p>
+</div></section>
+
+<section class="s alt" id="people"><div class="wrap">
+  <div class="eyebrow">The people</div>
+  <h2>Model builders, narrative weavers and agitators</h2>
+  <div class="people">
+    {% for p in vault.people %}<a class="person" href="{{ p.url | rel(page.url) }}">{% if p.data.photo %}<img class="avatar" src="{{ p.data.photo | rel(page.url) }}" alt="" width="52" height="52" loading="lazy">{% else %}<span class="avatar mono">{{ p.title | first }}</span>{% endif %}<span><strong>{{ p.title }}</strong><small>{{ p.data.headline or p.role }}</small></span></a>{% endfor %}
+  </div>
+  <p style="margin-top:24px"><a class="btn alt" href="{{ '/people/' | rel(page.url) }}">Meet the team</a></p>
+</div></section>
+
+{% block scripts %}
+<script id="site-data" type="application/json">{{ { ticker: tickerData, method: method, heritage: heritage, town: site.town_name } | json | safe }}</script>
+<script src="{{ page.url | root }}assets/js/model.js" defer></script>
+<script src="{{ page.url | root }}assets/js/ticker.js" defer></script>
+<script src="{{ page.url | root }}assets/js/sim-ui.js" defer></script>
+<script src="{{ page.url | root }}assets/js/method-panel.js" defer></script>
+<script src="{{ page.url | root }}assets/js/heritage.js" defer data-mode="teaser"></script>
+{% endblock %}

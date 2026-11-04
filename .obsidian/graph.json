@@ -1,0 +1,4 @@
+{ "colorGroups": [
+ {"query":"[type:person]","color":{"a":1,"rgb":3040069}},{"query":"[type:work]","color":{"a":1,"rgb":15774761}},
+ {"query":"[type:model]","color":{"a":1,"rgb":4167648}},{"query":"[type:heritage]","color":{"a":1,"rgb":13586992}},
+ {"query":"[type:source]","color":{"a":1,"rgb":7172189}}] }

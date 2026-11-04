@@ -1,0 +1,32 @@
+{
+  "funders": [
+    {
+      "id": "eit-climate-kic",
+      "name": "EIT Climate-KIC",
+      "url": "https://www.climate-kic.org/"
+    },
+    {
+      "id": "nordisk-kulturfond",
+      "name": "Nordisk Kulturfond",
+      "url": "https://nordiskkulturfond.org/en"
+    }
+  ],
+  "partners": [
+    {
+      "id": "edgeryders",
+      "name": "Edgeryders",
+      "url": "https://edgeryders.eu/"
+    },
+    {
+      "id": "fdc-messina",
+      "name": "Fondazione di Comunità di Messina",
+      "url": "https://fdcmessina.org/"
+    },
+    {
+      "id": "blivande",
+      "name": "Blivande",
+      "url": "https://www.blivande.com/",
+      "wordmark": "BLIVANDE"
+    }
+  ]
+}

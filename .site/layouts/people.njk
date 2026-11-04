@@ -1,0 +1,26 @@
+---
+layout: base.njk
+---
+{# Groups come from each person's `group` front matter; order inside a group from `order`. Add a person by adding a note from the Person template. #}
+{% set groups = [] %}
+{% for p in vault.people %}{% set g = p.data.group or 'Contributors' %}{% if groups.indexOf(g) < 0 %}{% set groups = (groups.push(g), groups) %}{% endif %}{% endfor %}
+{% set groupOrder = ['Principals', 'Contributors', 'Advisers', 'Alumni'] %}
+<section class="s"><div class="wrap">
+  <div class="eyebrow">The people</div>
+  <h1>{{ title }}</h1>
+  <p class="lead">{{ lead }}</p>
+  {% for g in groupOrder %}{% if groups.indexOf(g) >= 0 %}
+  <h2 class="pgroup">{{ g }}</h2>
+  <div class="pcards">
+    {% for p in vault.people | sort(false, false, 'order') %}{% if (p.data.group or 'Contributors') == g %}
+    <a class="pcard" href="{{ p.url | rel(page.url) }}">
+      {% if p.data.photo %}<img src="{{ p.data.photo | rel(page.url) }}" alt="Portrait of {{ p.title }}" width="208" height="240" loading="lazy">{% else %}<span class="ph" aria-hidden="true">{{ p.title | first }}</span>{% endif %}
+      <h3>{{ p.title }}</h3>
+      <p class="prole">{{ p.data.headline or p.role }}</p>
+      <p>{{ p.summary }}</p>
+    </a>
+    {% endif %}{% endfor %}
+  </div>
+  {% endif %}{% endfor %}
+  <p class="hint" style="margin-top:32px">Every person is a Markdown note in the <code>people/</code> folder. Add one with the Person template and set <code>group</code> and <code>order</code>.</p>
+</div></section>

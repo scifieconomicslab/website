@@ -1,0 +1,17 @@
+{
+  "name": "sci-fi-economics-lab-site",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Sci-Fi Economics Lab site, prototype v3. Content is Markdown in an Obsidian vault.",
+  "scripts": {
+    "build": "eleventy --config=.site/eleventy.config.js",
+    "serve": "eleventy --config=.site/eleventy.config.js --serve",
+    "test": "node model/test_golden.js"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-footnote": "^4.0.0",
+    "gray-matter": "^4.0.3"
+  }
+}

@@ -1,0 +1,14 @@
+---
+permalink: /assets/css/tokens.css
+eleventyExcludeFromCollections: true
+layout: false
+---
+/* Generated from .site/_data/palettes.json. Edit the JSON, not this file. */
+{%- for p in palettes.palettes %}
+{% if p.id == palettes.default %}:root,{% endif %}:root[data-palette="{{ p.id }}"]{
+  color-scheme:{{ p.scheme }};
+{%- for k, v in p.ui %}
+  --{{ k }}:{{ v }};
+{%- endfor %}
+}
+{%- endfor %}

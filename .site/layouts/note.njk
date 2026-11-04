@@ -1,0 +1,41 @@
+---
+layout: base.njk
+---
+{% set bl = page | backlinks %}
+<article class="note"><div class="wrap">
+  <div class="crumbs"><a href="{{ '/' | rel(page.url) }}">Home</a>{% if type %} / {{ type }}{% endif %}</div>
+  <h1>{{ title }}</h1>
+  <div class="badges">
+    {% if type %}<span class="pill">{{ type }}</span>{% endif %}
+    <span class="pill {{ stage or 'seedling' }}" title="Growth stage">{{ stage or 'seedling' }}</span>
+    <span class="pill {{ status or 'working' }}" title="Epistemic status">{{ status or 'working' }}</span>
+    {% if opinion %}<span class="pill" style="background:var(--sun)">Opinion essay</span>{% endif %}
+  </div>
+  {% if type == 'person' and photo %}<img class="portrait" src="{{ photo | rel(page.url) }}" alt="Portrait of {{ title }}" width="208" height="240">{% endif %}
+  {% if summary %}<p class="lead">{{ summary }}</p>{% endif %}
+  {% if type == 'work' and motif %}
+  <figure class="work-hero">{{ page.inputPath | workImage | safe }}</figure>
+  <p class="work-src">{% if source_url %}<a class="btn" href="{{ source_url }}" rel="noopener">Read the original: {{ source_label or source_url }}</a>{% else %}<span class="pill speculative">Original link to be added</span>{% endif %}</p>
+  {% endif %}
+  {% if period or who or kind or role or partners or url or repo or demo or country or decision or accessed %}
+  <dl class="facts">
+    {% if period %}<dt>When</dt><dd>{{ period }}</dd>{% endif %}
+    {% if who %}<dt>Who</dt><dd>{{ who }}</dd>{% endif %}
+    {% if kind %}<dt>Kind</dt><dd>{{ kind }}</dd>{% endif %}
+    {% if role %}<dt>Role</dt><dd>{{ role }}</dd>{% endif %}
+    {% if partners %}<dt>With</dt><dd>{{ partners }}</dd>{% endif %}
+    {% if country %}<dt>Where</dt><dd>{{ country }}</dd>{% endif %}
+    {% if decision %}<dt>Decision</dt><dd>{{ decision }}</dd>{% endif %}
+    {% if why_it_matters %}<dt>Why it matters</dt><dd>{{ why_it_matters }}</dd>{% endif %}
+    {% if url %}<dt>Link</dt><dd><a href="{{ url }}">{{ url }}</a></dd>{% endif %}
+    {% if accessed %}<dt>Accessed</dt><dd>{{ accessed }}</dd>{% endif %}
+    {% if repo %}<dt>Code</dt><dd><a href="{{ repo }}">{{ repo }}</a></dd>{% endif %}
+  </dl>
+  {% endif %}
+  <div class="body">{{ content | safe }}</div>
+  {% if confirm and confirm.length %}<aside class="confirm"><h2>To confirm</h2><ul>{% for c in confirm %}<li>{{ c }}</li>{% endfor %}</ul></aside>{% endif %}
+  {% if thread %}<p><a href="{{ thread }}">Discuss this note on Edgeryders</a></p>{% endif %}
+  {% if bl.length %}<aside class="back"><h2 style="font-size:20px">Linked from</h2><ul>
+    {% for b in bl %}<li><a href="{{ b.url | rel(page.url) }}">{{ b.title }}</a></li>{% endfor %}
+  </ul></aside>{% endif %}
+</div></article>

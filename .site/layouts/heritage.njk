@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+<section class="s"><div class="wrap">
+  <div class="eyebrow">Heritage</div>
+  <h1>{{ title }}</h1>
+  <p class="lead">Economists, city thinkers, game designers and writers whose ideas the Lab builds on. Solid outlines are confirmed. Dashed outlines are candidates the team has not yet agreed. To add a branch, add one line to the inbox file or one small note in <code>heritage/</code>.</p>
+  <div class="tree-tools" id="treeTools" style="margin-top:28px"></div>
+  <div class="tree-wrap" id="tree" tabindex="0" aria-label="Family tree"></div>
+  <div class="tfall" id="treeFall"></div>
+  <div class="tinfo" id="treeInfo"><p class="hint">Click a node to read why it is here.</p></div>
+  {% if heritage.warnings.length %}<details class="how" style="margin-top:30px"><summary>Tree warnings ({{ heritage.warnings.length }})</summary><div class="inner"><ul>{% for w in heritage.warnings %}<li>{{ w }}</li>{% endfor %}</ul></div></details>{% endif %}
+</div></section>
+<script id="site-data" type="application/json">{{ { heritage: heritage } | json | safe }}</script>
+<script src="{{ page.url | root }}assets/js/heritage.js" defer data-mode="page"></script>
