@@ -8,6 +8,8 @@ summary: "A small town economy with twelve causal links: rent, tax and a shared 
 repo: ""
 ---
 
+Linden Cove is a toy model with no deep economic meaning. Its only purpose is to show that simulation models can be simple to build and interpret. It contains twelve causal links.
+
 1. Higher rent moves money from workers to owners, who spend less of it in town, so shops sell less.
 2. Higher rent also lowers what workers keep, so fewer people move in and some leave.
 3. Rent above 30 draws builders in. Rent below 30 slowly starves the housing stock, so cheap rent first fills the town and then crowds it.
