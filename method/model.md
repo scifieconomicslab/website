@@ -8,9 +8,9 @@ edge_label: ["the option fails on paper", "the option holds"]
 tone: leaf
 stage: sapling
 status: working
-summary: "We build a small model of the place with sliders, grounded in complexity economics. Anyone in the room can try an option and watch what happens."
+summary: "We create simple models for each credible option, grounded in complexity economics. Anyone in the room can run the models, using sliders to control their parameters, and watch what happens."
 ---
 
-We build a small model of the place with sliders, grounded in complexity economics. Anyone in the room can try an option and watch what happens.
+We create simple models for each credible option, grounded in complexity economics. Anyone in the room can run the models, using sliders to control their parameters, and watch what happens.
 
 Step 3 of [[overview]].

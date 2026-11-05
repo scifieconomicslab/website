@@ -8,9 +8,9 @@ edge_label: []
 tone: leaf
 stage: sapling
 status: working
-summary: "The model keeps running beside real life, so the town can see whether the choice does what the story promised."
+summary: "The model now converts into a monitoring tool. Does real life match what people expected when they chose this option? If not, why not?"
 ---
 
-The model keeps running beside real life, so the town can see whether the choice does what the story promised.
+The model now converts into a monitoring tool. Does real life match what people expected when they chose this option? If not, why not?
 
 Step 9 of [[overview]].

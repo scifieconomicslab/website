@@ -8,9 +8,9 @@ edge_label: ["try another option"]
 tone: rust
 stage: sapling
 status: working
-summary: "Most options break on paper, which is the cheapest place to find out. The room goes back to the table and tries another."
+summary: "Models typically show many options would not work. This is good: a simulation is the cheapest way to fail. Everyone goes back to the table and tries another."
 ---
 
-Most options break on paper, which is the cheapest place to find out. The room goes back to the table and tries another.
+Models typically show many options would not work. This is good: a simulation is the cheapest way to fail. Everyone goes back to the table and tries another.
 
 Step 4 of [[overview]].
