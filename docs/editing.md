@@ -109,32 +109,31 @@ summary: "Used on the card."
 
 ## Heritage tree
 
-Folder: `heritage/`. Each note is one node in the family tree of ideas.
+Folder: `heritage/`. The tree has three levels, each a small note with `type: heritage`:
+
+- **Branch** (`heritage/branches/`): `heritage_type: "branch"` and a `branch` name.
+- **Sub-branch** (`heritage/clusters/`): `heritage_type: "cluster"`, a `sub_branch` name and the `branch` it sits under.
+- **Thinker** (`heritage/`): `heritage_type: "person"`, as below.
 
 ```yaml
 ---
 title: "Albert O. Hirschman"
 type: heritage
-kind: person                # person, work, idea, game, software, root or other
-parent: "[[The Lab]]"       # not [[the-lab]]. USes the title of the note
-							# instead of its file name.
-branch: economics           # economics, cities, games, fiction or other
-year: 
-status: confirmed           # confirmed or candidate
-why: "One line on why the idea matters to us."
-url: ""
+heritage_type: "person"
+branches:
+  - branch: "The Broken Tower"
+    sub_branch: "Agency and development"
+  # a second entry puts the thinker under another sub-branch too
+profession: "Economist"
+short_hook: "One line for the info panel"
+nominated_by: ["alberto"]
+status: "agreed"
 ---
 ```
 
-For a quick addition without a full note, add one line to `_inbox/heritage-inbox.md`:
-
-```text
-Name | kind | year | parent | branch | why | url
-```
-
-- Start the line with `!` to mark it confirmed. Without it the node is a candidate.
-- Start the line with `#` to switch it off.
-- If a node later gets its own file in `heritage/`, the file wins.
+- **Membership lives in one place.** A thinker's `branches` list decides where they appear. Sub-branch and branch notes never list their people. The first entry is the thinker's home (filled dot in the tree); further entries show as hollow dots.
+- **Names must match exactly.** `branch` and `sub_branch` have to spell a real branch and sub-branch. `npm test` and the build both fail if one does not, and say which note is wrong.
+- **To add a thinker**, copy `templates/heritage-node.md` into `heritage/` and fill it in.
 
 ## How we work
 

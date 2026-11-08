@@ -4,7 +4,8 @@ const path = require('path');
 const matter = require('gray-matter');
 
 const ROOT = path.resolve(__dirname, '..', '..');
-const SKIP = new Set(['node_modules', '_site', 'model', '_inbox', 'templates', '.site', '.obsidian', '.github', '.git', 'ticker']);
+// folders that are never part of the published vault: tooling, internal docs and the brief
+const SKIP = new Set(['node_modules', '_site', 'model', 'templates', '.site', '.obsidian', '.github', '.git', 'ticker', 'docs', 'brief']);
 const SKIP_FILES = new Set(['PLAN.md', 'README.md']);
 
 const slugify = s => String(s).toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -14,12 +15,14 @@ function walk(dir, out) {
     if (e.name.startsWith('.') || SKIP.has(e.name)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, out);
-    else if (e.name.endsWith('.md') && !SKIP_FILES.has(e.name) && !e.name.startsWith('AUDIT-') || (e.name === 'README.md' && dir !== ROOT && false)) out.push(p);
+    else if (e.name.endsWith('.md') && !SKIP_FILES.has(e.name) && !e.name.startsWith('AUDIT-')) out.push(p);
   }
   return out;
 }
 
 let cache = null;
+// the dev server rebuilds in one process, so drop the cache before each build
+function reset() { cache = null; }
 function load() {
   if (cache) return cache;
   const notes = [];
@@ -56,4 +59,4 @@ function load() {
   cache = { notes, index, resolve, backlinks: rel => back.has(rel) ? [...back.get(rel).values()] : [], missing, ROOT, slugify };
   return cache;
 }
-module.exports = { load, slugify, ROOT };
+module.exports = { load, reset, slugify, ROOT };

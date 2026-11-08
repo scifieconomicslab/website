@@ -15,7 +15,7 @@ Routine upkeep: settings, colours, logos, images, the town model, and what to do
 | `town_name` | Name of the toy town (Linden Cove) |
 | `repo`, `repoBranch` | Used to build each page's Edit this page link |
 
-`repo` still holds a placeholder (`https://github.com/OWNER/sci-fi-economics-lab`). Until you set it to the real repository, every Edit this page link in the footer is broken.
+`repo` points at `https://github.com/scifieconomicslab/website`. Change it if the repository moves, or every Edit this page link in the footer breaks.
 
 ## Palettes
 

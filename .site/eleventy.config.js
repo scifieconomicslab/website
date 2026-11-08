@@ -1,6 +1,6 @@
 const path = require('path');
 const MarkdownIt = require('markdown-it');
-const { load, slugify } = require('./plugins/vault');
+const { load, reset, slugify } = require('./plugins/vault');
 
 // relative URL from one page to another, so the built site also works when opened from a folder (file://)
 const relUrl = (from, to) => {
@@ -28,9 +28,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('abs', (to, from) => relUrl(from, to));
 
   eleventyConfig.addPassthroughCopy({ '.site/assets/js': 'assets/js', '.site/assets/figures': 'assets/figures', '.site/assets/fonts': 'assets/fonts', '.site/assets/funders': 'assets/funders', '.site/assets/img': 'assets/img', '.site/assets/people': 'assets/people', '.site/assets/css/site.css': 'assets/css/site.css' });
-  ['node_modules/**', '_site/**', 'model/**', '_inbox/**', 'templates/**', 'ticker/**', 'PLAN.md', 'README.md', 'AUDIT-*.md', '.site/layouts/**', '.site/tools/**', '.site/_data/**', '.site/plugins/**'].forEach(g => eleventyConfig.ignores.add(g));
-  eleventyConfig.setServerOptions({ watch: ['.site/assets/**'] });
-  eleventyConfig.on('eleventy.before', () => { const v = load(); if (v.missing.length) console.warn('[warn] unresolved wikilinks:\n  ' + v.missing.join('\n  ')); });
+  ['node_modules/**', '_site/**', 'model/**', 'docs/**', 'brief/**', 'templates/**', 'ticker/**', 'PLAN.md', 'README.md', 'AUDIT-*.md', '.site/layouts/**', '.site/tools/**', '.site/_data/**', '.site/plugins/**'].forEach(g => eleventyConfig.ignores.add(g));
+  eleventyConfig.setServerOptions({ watch: ['.site/assets/**', '.site/_data/**', '.site/plugins/**'] });
+  eleventyConfig.on('eleventy.before', () => { reset(); const v = load(); if (v.missing.length) console.warn('[warn] unresolved wikilinks:\n  ' + v.missing.join('\n  ')); });
 
   return {
     dir: { input: '.', output: '_site', includes: '.site/layouts', data: '.site/_data' },

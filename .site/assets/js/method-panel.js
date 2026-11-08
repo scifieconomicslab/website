@@ -5,6 +5,7 @@
   var DATA = JSON.parse(document.getElementById('site-data').textContent);
   var steps = DATA.method; if (!steps.length) return;
   var NS = 'http://www.w3.org/2000/svg';
+  function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   // Node pictures are drawn from parts the site already uses: sliders, model charts, the budget bar, iso blocks, the Courier strip.
   var bg=t=>'color-mix(in srgb,var(--'+t+') 22%,var(--card))';
   // isometric block in the town figure's three-band shading
@@ -143,14 +144,14 @@
   var card = document.getElementById('mcard');
   function showCard(s) {
     var root = document.querySelector('script[data-root]').getAttribute('data-root');
-    card.innerHTML = '<b>' + s.step + '. ' + s.label + '</b><br>' + s.summary + '<br><a href="' + root + s.url.replace(/^\//, '').replace(/\/$/, '/index.html') + '">Open the note</a>';
+    card.innerHTML = '<b>' + esc(s.step) + '. ' + esc(s.label) + '</b><br>' + esc(s.summary) + '<br><a href="' + root + s.url.replace(/^\//, '').replace(/\/$/, '/index.html') + '">Open the note</a>';
     card.classList.add('on');
   }
   document.addEventListener('click', function (e) { if (!e.target.closest('.node') && !e.target.closest('.mcard')) card.classList.remove('on'); });
 
   // static list for reduced motion
   var list = document.getElementById('mlist');
-  if (list) list.innerHTML = steps.map(function (s) { return '<li><b>' + s.label + '.</b> ' + s.summary + '</li>'; }).join('');
+  if (list) list.innerHTML = steps.map(function (s) { return '<li><b>' + esc(s.label) + '.</b> ' + esc(s.summary) + '</li>'; }).join('');
 
   // CAPS built from steps data: each entry is [scrollThreshold, title, body]
   var capThresholds = [0, 0.08, 0.20, 0.33, 0.43, 0.52, 0.60];

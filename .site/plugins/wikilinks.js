@@ -16,7 +16,7 @@ module.exports = function wikilinks(md, opts) {
       const [target, heading] = targetPart.split('#');
       if (embed) {
         const t = state.push('image', 'img', 0);
-        t.attrs = [['src', 'assets/' + target.trim()], ['alt', label || target.trim()]];
+        t.attrs = [['src', relUrl((state.env && state.env.pageUrl) || '/', '/assets/' + target.trim())], ['alt', label || target.trim()]];
         t.children = []; t.content = label || target.trim();
       } else {
         const v = load(); const dest = v.resolve(target.trim());

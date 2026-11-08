@@ -170,7 +170,7 @@ npm run build
 │   ├── assets/           # CSS, JS, fonts, images, SVGs
 │   ├── layouts/          # Nunjucks templates
 │   ├── pages/            # Generated CSS (tokens.css.njk)
-│   └── plugins/          # Eleventy plugins (vault, wikilinks, inbox)
+│   └── plugins/          # Eleventy plugins (vault, wikilinks, heritage)
 ├── copy/                 # Reusable text snippets
 ├── heritage/             # Heritage nodes (Markdown)
 ├── method/               # 9 method steps (Markdown)

@@ -675,6 +675,8 @@ Nothing in this model is calibrated to a real economy. The page must say so in p
 
 ## 10. The heritage page
 
+> Superseded. The page is now a three-level tree (branch, sub-branch, thinker) built from notes in `heritage/`; see `docs/editing.md`. The inbox file and the single-parent node schema below no longer exist.
+
 ### 10.1 Purpose and look
 
 A page at `/heritage/` showing where the Lab's ideas come from, as a tree. Root at the left, labelled "The Lab". Branches spread right. Style matches the town and the flowchart: paper background, hand-inked wobble filter on lines, nodes as small cards.

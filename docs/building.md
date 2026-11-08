@@ -26,7 +26,7 @@ This installs Eleventy, markdown-it, its footnote plugin and gray-matter into `n
 The build takes under a second. It prints each page it writes. Watch for lines starting with `[warn]`:
 
 - `unresolved wikilinks` lists `[[links]]` that point at no note, as `file: [[target]]`.
-- Heritage warnings name tree nodes whose parent could not be found.
+- Heritage errors name the thinker or sub-branch that does not match. They stop the build.
 
 Fix warnings before you publish. They do not stop the build.
 
@@ -61,9 +61,9 @@ If the site will live in a sub-path (for example `example.org/lab/`), no change 
 
 These folders and files are never published as pages:
 
-`docs/`, `model/`, `templates/`, `ticker/`, `_inbox/`, `node_modules/`, `_site/`, `PLAN.md`, `README.md` and any `AUDIT-*.md`.
+`docs/`, `brief/`, `model/`, `templates/`, `ticker/`, `node_modules/`, `_site/`, `PLAN.md`, `README.md` and any `AUDIT-*.md`.
 
-Their content can still feed the site. The `ticker/` and `_inbox/` files, for example, are read as data.
+Their content can still feed the site. The `ticker/` files, for example, are read as data.
 
 ## Project layout
 
@@ -77,9 +77,9 @@ sources/                  one note per cited source
 models/                   write-ups of the town model
 offers/                   the Work with us cards
 copy/                     text blocks pulled into the landing page
-brief/, essays/           planning and opinion notes, published as ordinary pages
+essays/                   opinion notes, published as ordinary pages
+brief/                    planning notes, not published
 ticker/                   voice of the Linden Cove Courier (cast, rules, templates)
-_inbox/                   one-line heritage candidates
 model/                    reference economic model in Python and its test data
 templates/                starter notes for each content type
 docs/                     this documentation
@@ -91,7 +91,7 @@ Inside `.site/`:
 ```text
 eleventy.config.js        build configuration and template filters
 layouts/                  page templates (base, landing, note, work, people, heritage)
-plugins/                  vault reader, wikilink support, heritage inbox parser
+plugins/                  vault reader, wikilink support, heritage data builder
 _data/                    site settings, palettes, funders, and data built from the notes
 assets/                   css, js, fonts, images, people photos, funder logos, work illustrations
 tools/                    optional Python scripts that generate illustrations

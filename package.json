@@ -6,7 +6,7 @@
   "scripts": {
     "build": "eleventy --config=.site/eleventy.config.js",
     "serve": "eleventy --config=.site/eleventy.config.js --serve",
-    "test": "node model/test_golden.js"
+    "test": "node model/test_golden.js && node .site/tools/check-heritage.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",

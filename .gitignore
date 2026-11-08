@@ -1,3 +1,7 @@
 node_modules/
 _site/
 model/golden.json.bak
+site-preview.zip
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.DS_Store

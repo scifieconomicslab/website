@@ -101,7 +101,8 @@
     return el('a', { href: href, 'aria-label': label, class: 'hlink' }, parent);
   }
 
-  var heritageUrl = root + 'heritage/';
+  var heritageUrl = root + 'heritage/index.html';
+  var noteHref = function (url) { return root + String(url).replace(/^\//, '').replace(/\/$/, '/index.html'); };
 
   // branches
   BRANCH_ORDER.forEach(function (bn) {
@@ -209,7 +210,7 @@
 
   function showInfo(t) {
     var box = document.getElementById('treeInfo');
-    if (!box) { if (t.url) location.href = root + t.url.replace(/^\//, ''); return; }
+    if (!box) { if (t.url) location.href = noteHref(t.url); return; }
     var badges = (t.branches || []).map(function (b) {
       return '<span class="hbadge" style="--c:' + colorOf(b.branch) + '">' + esc(b.sub_branch) + '<small>' + esc(b.branch) + '</small></span>';
     }).join('');
@@ -218,7 +219,7 @@
       '<h2>' + esc(t.title) + '</h2>' +
       (t.short_hook ? '<p class="hhook">' + esc(t.short_hook) + '</p>' : '') +
       '<div class="hbadges">' + badges + '</div>' +
-      '<a class="btn sm" href="' + root + t.url.replace(/^\//, '') + '">Open note</a></div>';
+      '<a class="btn sm" href="' + noteHref(t.url) + '">Open note</a></div>';
   }
 
   function toggleBranch(bn) { state.branch = state.branch === bn ? '' : bn; state.cluster = ''; apply(); }
