@@ -60,21 +60,22 @@
   ];
   var POS = {}; NODES.forEach(function (n) { POS[n.id] = n.pos; });
   // lab: [x, y, anchor, text]. need: the step that has to be on screen first.
+  // stepFrom/stepTo map to steps data; labPos holds position for label if dynamic
   var EDGES = [
-    { id: 'e12', d: 'M131 330 L155 330', need: 2 },
-    { id: 'e23', d: 'M281 330 L305 330', need: 3 },
-    { id: 'e34', d: 'M368 268 L368 184', lab: [358, 232, 'end', 'fails on paper'], need: 4 },
-    { id: 'e42', d: 'M305 120 C250 120 218 190 218 266', lab: [236, 214, 'start', 'try another'], need: 4, late: true },
-    { id: 'e3a', d: 'M431 318 C470 318 450 200 497 200', lab: [478, 178, 'middle', 'option A'], need: 5 },
-    { id: 'e3b', d: 'M431 342 C470 342 450 460 497 460', lab: [478, 494, 'middle', 'option B'], need: 5 },
-    { id: 'e5a6', d: 'M653 200 C710 200 690 318 707 318', need: 6 },
-    { id: 'e5b6', d: 'M653 460 C710 460 690 342 707 342', need: 6 },
-    { id: 'e67a', d: 'M833 318 C890 318 870 200 887 200', need: 7 },
-    { id: 'e67b', d: 'M833 342 C890 342 870 460 887 460', need: 7, lab: [770, 414, 'middle', 'read it back, revise'] },
-    { id: 'e78a', d: 'M1013 200 C1060 200 1040 318 1067 318', need: 8 },
-    { id: 'e78b', d: 'M1013 460 C1060 460 1040 342 1067 342', need: 8, lab: [1130, 412, 'middle', 'the town decides'] },
-    { id: 'e89', d: 'M1130 268 L1130 184', lab: [1118, 232, 'end', 'life goes on'], need: 9 },
-    { id: 'eloop', d: 'M1067 120 C850 14 250 14 68 266', need: 9, late: true, dash: true, lab: [570, 34, 'middle', 'a new problem surfaces'] }
+    { id: 'e12', d: 'M131 330 L155 330', need: 2, stepFrom: 1, stepTo: 2 },
+    { id: 'e23', d: 'M281 330 L305 330', need: 3, stepFrom: 2, stepTo: 3 },
+    { id: 'e34', d: 'M368 268 L368 184', need: 4, stepFrom: 3, stepTo: 4, labPos: [358, 232, 'end'] },
+    { id: 'e42', d: 'M305 120 C250 120 218 190 218 266', need: 4, late: true, stepFrom: 4, stepTo: 2, labPos: [236, 214, 'start'] },
+    { id: 'e3a', d: 'M431 318 C470 318 450 200 497 200', need: 5, stepFrom: 3, stepTo: 5, labPos: [478, 178, 'middle'] },
+    { id: 'e3b', d: 'M431 342 C470 342 450 460 497 460', need: 5, stepFrom: 3, stepTo: 5, labPos: [478, 494, 'middle'] },
+    { id: 'e5a6', d: 'M653 200 C710 200 690 318 707 318', need: 6, stepFrom: 5, stepTo: 6 },
+    { id: 'e5b6', d: 'M653 460 C710 460 690 342 707 342', need: 6, stepFrom: 5, stepTo: 6 },
+    { id: 'e67a', d: 'M833 318 C890 318 870 200 887 200', need: 7, stepFrom: 6, stepTo: 7 },
+    { id: 'e67b', d: 'M833 342 C890 342 870 460 887 460', need: 7, stepFrom: 6, stepTo: 7, labPos: [770, 414, 'middle'] },
+    { id: 'e78a', d: 'M1013 200 C1060 200 1040 318 1067 318', need: 8, stepFrom: 7, stepTo: 8 },
+    { id: 'e78b', d: 'M1013 460 C1060 460 1040 342 1067 342', need: 8, stepFrom: 7, stepTo: 8, labPos: [1130, 412, 'middle'] },
+    { id: 'e89', d: 'M1130 268 L1130 184', need: 9, stepFrom: 8, stepTo: 9, labPos: [1118, 232, 'end'] },
+    { id: 'eloop', d: 'M1067 120 C850 14 250 14 68 266', need: 9, late: true, dash: true, labPos: [570, 34, 'middle'] }
   ];
   var RUSH = 'M218 394 C218 590 1130 590 1130 394';
 
@@ -106,6 +107,20 @@
     lines.push(cur); return lines;
   }
   var byStep = {}; steps.forEach(function (s) { byStep[s.step] = s; });
+  // Populate edge labels from steps data (edge_label frontmatter)
+  EDGES.forEach(function (e) {
+    var fromStep = byStep[e.stepFrom];
+    var toStep = byStep[e.stepTo];
+    if (fromStep && fromStep.edge) {
+      var idx = (fromStep.next || []).indexOf(e.stepTo);
+      if (idx >= 0 && fromStep.edge[idx] && e.labPos) {
+        e.lab = [e.labPos[0], e.labPos[1], e.labPos[2], fromStep.edge[idx]];
+      }
+    }
+  });
+  // Special case for eloop label (not in notes)
+  var eloop = EDGES.find(function (e) { return e.id === 'eloop'; });
+  if (eloop && eloop.labPos) eloop.lab = [eloop.labPos[0], eloop.labPos[1], eloop.labPos[2], 'a new problem surfaces'];
   var nodeEls = {};
   NODES.forEach(function (n) {
     var s = byStep[n.step]; if (!s) return;
@@ -137,16 +152,13 @@
   var list = document.getElementById('mlist');
   if (list) list.innerHTML = steps.map(function (s) { return '<li><b>' + s.label + '.</b> ' + s.summary + '</li>'; }).join('');
 
-  var CAPS = [
-    [0, 'A place starts with something it feels.', 'People name the problem together, in their own words, before anyone builds anything.'],
-    [0.08, 'Then we lay out the options.', 'Each option is a rule the town could pick. We build a small model with sliders so the room can try them.'],
-    [0.20, 'Most options break on paper, which is the cheap place to find out.', 'When one does, the room returns to the table and tries another.'],
-    [0.33, 'The ones that hold do not give one answer. They give different paths.', 'Each path trades one thing for another, and the model shows the trade as curves anyone can read.'],
-    [0.43, 'The paths go to a table, with the people who have a stake in them.', 'They argue over the same curves, so the disagreement is about the town and not about whose spreadsheet is right.'],
-    [0.52, 'Then each path is told as fiction.', 'Writers follow people through each future and say which parts of the model they hold fixed. The room reads the stories back and revises them.'],
-    [0.60, 'Then the town decides and lives with it.', 'The choice belongs to the place, and the model keeps running beside real life afterwards.'],
-    [0.78, 'We checked the core of this formally. A shortcut breaks both of our rules within two steps.', 'In the checked model, skipping the test and the story gets you a commitment nobody examined.']
-  ];
+  // CAPS built from steps data: each entry is [scrollThreshold, title, body]
+  var capThresholds = [0, 0.08, 0.20, 0.33, 0.43, 0.52, 0.60];
+  var CAPS = steps.map(function (s, i) {
+    return [capThresholds[i] || i * 0.1, s.caption_title, s.caption_body];
+  });
+  // Add the formal verification caption at the end
+  CAPS.push([0.78, 'We checked the core of this formally. A shortcut breaks both of our rules within two steps.', 'In the checked model, skipping the test and the story gets you a commitment nobody examined.']);
   var capEl = document.getElementById('mcap'), prog = document.getElementById('mprog');
   prog.innerHTML = CAPS.map(function () { return '<i></i>'; }).join('');
   var sec = document.getElementById('method'), lastKey = '';
@@ -184,4 +196,24 @@
   var tick = false;
   window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; update(); }); } }, { passive: true });
   window.addEventListener('resize', update); update();
+
+  // Scroll hint to indicate interactivity
+  (function () {
+    var mfig = document.querySelector('.mfig');
+    if (!mfig) return;
+    var hint = document.createElement('div');
+    hint.id = 'scroll-hint';
+    hint.style.cssText = 'position:absolute;left:50%;bottom:24px;transform:translateX(-50%);font:500 13px var(--mono);color:var(--mute);pointer-events:none;opacity:1;transition:opacity .5s;z-index:10;white-space:nowrap';
+    hint.textContent = '\u2193 Scroll to explore';
+    mfig.appendChild(hint);
+    var removed = false;
+    window.addEventListener('scroll', function onScroll() {
+      if (window.scrollY > 100 && !removed) {
+        removed = true;
+        hint.style.opacity = '0';
+        setTimeout(function () { hint.remove(); }, 500);
+        window.removeEventListener('scroll', onScroll);
+      }
+    }, { passive: true });
+  })();
 })();

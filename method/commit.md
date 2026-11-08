@@ -8,6 +8,8 @@ edge_label: ["life goes on"]
 tone: green
 stage: sapling
 status: working
+caption_title: "Then the town decides and lives with it."
+caption_body: "The choice belongs to the place, and the model keeps running beside real life afterwards."
 summary: "The town's stakeholders come to the decision of taking action. We do not decide for it, and we do not let the decision arrive before the test and the story."
 ---
 
