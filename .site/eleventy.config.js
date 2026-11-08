@@ -20,7 +20,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('slug', slugify);
   eleventyConfig.addFilter('json', v => JSON.stringify(v).replace(/</g, '\\u003c'));
   eleventyConfig.addFilter('backlinks', page => load().backlinks(page.inputPath.replace(/^\.\//, '')));
-  eleventyConfig.addFilter('editUrl', (page, site) => `${site.repo}/edit/${site.repoBranch}/${page.inputPath.replace(/^\.\//, '')}`);
   eleventyConfig.addFilter('noteBody', (rel, pageUrl) => { const n = load().notes.find(n => n.rel === rel); return n ? md.render(n.body, { pageUrl }) : ''; });
   eleventyConfig.addFilter('workImage', rel => { const f = require('path').join(__dirname, 'assets', 'work', require('path').basename(rel, '.md') + '.svg'); try { return require('fs').readFileSync(f, 'utf8'); } catch (e) { return ''; } });
   eleventyConfig.addFilter('funderLogo', id => { const fs = require('fs'), path = require('path'), d = path.join(__dirname, 'assets', 'funders'); try { return fs.readdirSync(d).find(f => f.replace(/\.[^.]+$/, '') === id && /\.(png|jpe?g|svg|webp)$/i.test(f)) || ''; } catch (e) { return ''; } });

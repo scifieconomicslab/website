@@ -13,9 +13,7 @@ Routine upkeep: settings, colours, logos, images, the town model, and what to do
 | `contact` | Address behind Bring us a town, Write to us and the footer |
 | `edgeryders` | Link in the footer |
 | `town_name` | Name of the toy town (Linden Cove) |
-| `repo`, `repoBranch` | Used to build each page's Edit this page link |
 
-`repo` points at `https://github.com/scifieconomicslab/website`. Change it if the repository moves, or every Edit this page link in the footer breaks.
 
 ## Palettes
 

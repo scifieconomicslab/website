@@ -171,7 +171,7 @@ Rules: serif for headings, sans for body, mono for labels, numbers and the ticke
 6. **Heritage teaser.** A small static render of the tree with the line "Where our ideas come from", linking to `/heritage/`.
 7. **Work with us.** The four offers from the brief and one contact address.
 8. **People.** The four principals, from `people/`.
-9. **Footer.** Edgeryders link, licence, "Edit this page" link to the note on GitHub.
+9. **Footer.** Edgeryders link, licence.
 
 Hero copy, verbatim from the feedback:
 

@@ -4,6 +4,14 @@ All content is Markdown with a block of settings at the top, called front matter
 
 After any edit, run `npm run build` (or leave `npm run serve` running) and check the result in the browser.
 
+## Editing through GitHub
+
+The site is not editable from its own pages. All changes go through the repository at <https://github.com/scifieconomicslab/website>:
+
+1. Open the note in GitHub (or clone the repo) and edit it. The file path matches the section: `work/`, `people/`, `heritage/` and so on.
+2. Run `npm test` and `npm run build` locally if you cloned it. Both also run on every push.
+3. Commit to `main`. The deploy workflow rebuilds and publishes the site. If a check fails, the old site stays live.
+
 ## How a note works
 
 ```markdown
