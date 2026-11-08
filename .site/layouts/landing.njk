@@ -7,7 +7,7 @@ layout: base.njk
     <h1>{{ hero_title }}</h1>
     <p class="lede">{{ hero_lede }}</p>
     <ul>{% for p in hero_points %}<li>{{ p }}</li>{% endfor %}</ul>
-    <div class="btns"><a class="btn" href="#run">Run the town</a><a class="btn alt" href="{{ '/models/linden-cove/' | rel(page.url) }}">What is this?</a></div>
+    <div class="btns"><a class="btn" href="{{ '/models/linden-cove/' | rel(page.url) }}">What is this?</a><a class="btn alt" href="mailto:{{ site.contact }}?subject=Bring%20us%20your%20problems">Bring us your problems</a></div>
   </div>
   <div class="fig" id="figbox">
     <iframe id="fig" title="{{ site.town_name }}, a small town you can run" loading="eager"></iframe>
@@ -79,7 +79,6 @@ layout: base.njk
   <div class="panel summary" id="summary" tabindex="-1"></div>
 
   <details class="how"><summary>How this works</summary><div class="inner">{{ 'models/linden-cove.md' | noteBody(page.url) | safe }}</div></details>
-  <p class="toy">A toy model with invented numbers, built to show how the loops couple. A real place needs its own data; see <a href="{{ '/models/calibrating-a-real-place/' | rel(page.url) }}">how we would calibrate one</a>.</p>
 </div></section>
 
 <section class="provoke" id="why" aria-label="Why the Lab exists"><div class="wrap pgrid">
