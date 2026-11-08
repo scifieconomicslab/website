@@ -10,4 +10,4 @@ layout: base.njk
   <div class="tinfo" id="treeInfo"><p class="hint">Click a node to read why it is here.</p></div>
 </div></section>
 <script id="site-data" type="application/json">{{ { heritage: heritage } | json | safe }}</script>
-<script src="{{ page.url | root }}assets/js/heritage.js" defer data-mode="page"></script>
+<script src="{{ page.url | root }}assets/js/heritage.js?v={{ build }}" defer data-mode="page"></script>

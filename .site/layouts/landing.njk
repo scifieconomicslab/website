@@ -150,9 +150,9 @@ layout: base.njk
 
 {% block scripts %}
 <script id="site-data" type="application/json">{{ { ticker: tickerData, method: method, heritage: heritage, town: site.town_name } | json | safe }}</script>
-<script src="{{ page.url | root }}assets/js/model.js" defer></script>
-<script src="{{ page.url | root }}assets/js/ticker.js" defer></script>
-<script src="{{ page.url | root }}assets/js/sim-ui.js" defer></script>
-<script src="{{ page.url | root }}assets/js/method-panel.js" defer></script>
-<script src="{{ page.url | root }}assets/js/heritage.js" defer data-mode="teaser"></script>
+<script src="{{ page.url | root }}assets/js/model.js?v={{ build }}" defer></script>
+<script src="{{ page.url | root }}assets/js/ticker.js?v={{ build }}" defer></script>
+<script src="{{ page.url | root }}assets/js/sim-ui.js?v={{ build }}" defer></script>
+<script src="{{ page.url | root }}assets/js/method-panel.js?v={{ build }}" defer></script>
+<script src="{{ page.url | root }}assets/js/heritage.js?v={{ build }}" defer data-mode="teaser"></script>
 {% endblock %}

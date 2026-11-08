@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{% if title and page.url != '/' %}{{ title }} · {% endif %}{{ site.title }}</title>
 <meta name="description" content="{{ summary or site.tagline }}">
-<link rel="stylesheet" href="{{ page.url | root }}assets/css/tokens.css">
-<link rel="stylesheet" href="{{ page.url | root }}assets/css/site.css">
+<link rel="stylesheet" href="{{ page.url | root }}assets/css/tokens.css?v={{ build }}">
+<link rel="stylesheet" href="{{ page.url | root }}assets/css/site.css?v={{ build }}">
 <script>
 /* apply the saved palette before first paint */
 (function(){try{var p=new URLSearchParams(location.search).get('palette')||localStorage.getItem('lab-palette');
@@ -37,7 +37,7 @@ if(p&&ok[p])document.documentElement.setAttribute('data-palette',p);}catch(e){}}
   <div class="pal" id="pal"></div>
 </div></footer>
 <script id="palettes-data" type="application/json">{{ palettes | json | safe }}</script>
-<script src="{{ page.url | root }}assets/js/palette.js" data-root="{{ page.url | root }}" defer></script>
+<script src="{{ page.url | root }}assets/js/palette.js?v={{ build }}" data-root="{{ page.url | root }}" defer></script>
 {% block scripts %}{% endblock %}
 </body>
 </html>
