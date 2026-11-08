@@ -1,15 +1,13 @@
 ---
-title: Jane Jacobs
+title: "Jane Jacobs"
 type: heritage
-kind: person
-parent: "[[Economic Geography]]"
-branch: cities
-year:
-status: confirmed
-why: "The city as an economy: diversity, small firms and local trade."
-url: ""
-stage: seedling
-summary: "The city as an economy: diversity, small firms and local trade."
+heritage_type: "person"
+branches:
+  - branch: "The Broken Tower"
+    sub_branch: "Place and community"
+profession: "Urbanist"
+short_hook: "The Death and Life of Great American Cities — eyes on the street, mixed use, and organic order"
+nominated_by: ["alberto", "yudha"]
+status: "agreed"
 ---
-
-Jacobs was not an academic, but an activist. Her 1961 book _The Death and Life of Great American Cities_ is a major reference for scholars of cities everywhere.
+Jane Jacobs' *The Death and Life of Great American Cities* showed that urban vitality comes from mixed use, short blocks, density, and diversity — conditions that generate "eyes on the street" and organic social order. The Lab uses Jacobs to ask: what physical and social infrastructure does this place need for economic life to self-organize?

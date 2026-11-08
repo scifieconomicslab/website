@@ -218,7 +218,7 @@
       '<h2>' + esc(t.title) + '</h2>' +
       (t.short_hook ? '<p class="hhook">' + esc(t.short_hook) + '</p>' : '') +
       '<div class="hbadges">' + badges + '</div>' +
-      '<a class="btn sm" href="' + root + 'heritage/' + t.id + '/">Open note</a></div>';
+      '<a class="btn sm" href="' + root + t.url.replace(/^\//, '') + '">Open note</a></div>';
   }
 
   function toggleBranch(bn) { state.branch = state.branch === bn ? '' : bn; state.cluster = ''; apply(); }

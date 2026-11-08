@@ -1,14 +1,13 @@
 ---
-title: Amartya Sen
+title: "Amartya Sen"
 type: heritage
-kind: person
-parent: "[[The Pluriversity]]"
-branch: economics
-year:
-status: confirmed
-why: "Proponent of the capability approach: development as freedom."
-url: ""
-stage: seedling
-summary: "Proponent of the capability approach: development as freedom."
+heritage_type: "person"
+branches:
+  - branch: "The Danger Zone"
+    sub_branch: "Freedom and self-governance"
+profession: "Economist"
+short_hook: "Capability approach — freedom as development"
+nominated_by: ["alberto", "joffa"]
+status: "agreed"
 ---
-Eminent philosopher and value theorist, Sen proposed that a high-performing economy is one that multiplies the substantive (as opposed to formal) freedoms it provides people who participate in it. This is known as the capability approach, and is the value theory generally accepted by complexity economists and by the Lab.
+Amartya Sen's capability approach reframes development as the expansion of substantive freedoms — the real opportunities people have to do and be what they value. His work shows that economic growth is a means, not an end; the end is the expansion of human capabilities. This directly informs the Lab's insistence that any model must start from what people themselves name as the problem.

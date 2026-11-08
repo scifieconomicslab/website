@@ -221,6 +221,7 @@ footer.foot .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-bet
 .talso{fill:none;stroke:var(--mute);stroke-width:1.6;stroke-dasharray:2 5;stroke-linecap:round}
 .tinfo{margin-top:var(--gap);display:grid;gap:8px}
 .tfall{display:none}
+@media (max-width:760px){.is-full.tree-host{display:none}.tfall{display:block}}
 details.nest ul{list-style:none;padding-left:20px;border-left:2px solid var(--line);margin:8px 0}
 details.nest>summary{cursor:pointer;font-weight:500}
 @media (max-width:760px){.tree-wrap{display:none}.tfall{display:block}}

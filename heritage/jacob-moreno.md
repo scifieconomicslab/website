@@ -1,14 +1,13 @@
 ---
-title: Jacob Levy Moreno
+title: "Jacob Moreno"
 type: heritage
-kind: person
-parent: "[[Network Science]]"
-branch: economics
-year:
-status: confirmed
-why: Psychologist, founder of sociometry (later social network analysis)
-url: ""
-stage: seedling
-summary: Psychologist, founder of sociometry (later social network analysis)
+heritage_type: "person"
+branches:
+  - branch: "The Chemical Wedding"
+    sub_branch: "Networks and relationships"
+profession: "Psychologist"
+short_hook: "Sociometry and psychodrama — mapping the invisible lines of attraction and repulsion"
+nominated_by: ["alberto"]
+status: "agreed"
 ---
-Romanian-American, Moreno invented sociograms in the 1930s. These are node-link representations of social structures that we still use today in social network analysis.  He used his sociograms to explain social phenomena, another first.
+Jacob Moreno invented sociometry — the quantitative mapping of interpersonal choices — and psychodrama, a method for enacting and exploring social situations. His insight that "who chooses whom" reveals the real structure of a group gives the Lab a method for mapping the social fabric of a place before designing any economic intervention.

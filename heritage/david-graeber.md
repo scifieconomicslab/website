@@ -1,14 +1,17 @@
 ---
-title: David Graeber
+title: "David Graeber"
 type: heritage
-kind: person
-parent: "[[Economic Anthropology]]"
-branch: economics
-year:
-status: confirmed
-why: Scholar of money, debt, freedom and how economic structures are not an inevitability, but a choice.
-url: ""
-stage: seedling
-summary: Scholar of money, debt, freedom and how economic structures are not an inevitability, but a choice.
+heritage_type: "person"
+branches:
+  - branch: "The Danger Zone"
+    sub_branch: "Beliefs, values, institutions"
+  - branch: "The Chemical Wedding"
+    sub_branch: "Money and finance"
+  - branch: "The Broken Tower"
+    sub_branch: "Agency and development"
+profession: "Anthropologist"
+short_hook: "Debt, value, and the anthropology of systems"
+nominated_by: ["alberto", "joffa", "yudha"]
+status: "hub"
 ---
-Author of influential works such as _Debt: The First 5,000 Years_ on the history of money and debt,  _Bullshit Jobs_ on the apparently inexplicable multiplication of uneconomical jobs, and _The Dawn of Everything_  (with archaeologist David Wengrow) on why modern societies got stuck in the belief that we live in the only societal and economic configuration possible.
+David Graeber's *Debt: The First 5000 Years* overturned the myth of barter, showing that credit systems precede coinage and that money is fundamentally a social relation, not a thing. His work on bureaucracy, value, and the anthropology of debt gives the Lab a lens for seeing economic systems as moral architectures. The Lab draws on his insight that "the ultimate hidden truth of the world is that it is something we make, and could just as easily make differently."

@@ -1,14 +1,13 @@
 ---
-title: Fabrizio Barca
+title: "Fabrizio Barca"
 type: heritage
-kind: person
-parent: "[[Economic Geography]]"
-branch: economics
-year:
-status: confirmed
-why: Civil servant and politician, proponent of a place-based approach to economic policies
-url: ""
-stage: seedling
-summary: Civil servant and politician, proponent of a place-based approach to economic policies
+heritage_type: "person"
+branches:
+  - branch: "The Broken Tower"
+    sub_branch: "Place and community"
+profession: "Economist"
+short_hook: "Inner areas and territorial cohesion — places as communities of destiny"
+nominated_by: ["alberto"]
+status: "agreed"
 ---
-Senior civil servant and one-time Italian Minister for regional cohesion, Barca is the main author of an influential high-level report to the European Commission, where he lays out a proposal for a far-reaching regional cohesion policy for the European Union. 
+Fabrizio Barca's work on inner areas and territorial cohesion argues that places are not just locations on a map but communities of destiny — shared histories, infrastructures, and futures. His leadership of Italy's National Strategy for Inner Areas gives the Lab a policy template for place-based development that starts from the community's own diagnosis.

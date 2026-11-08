@@ -1,15 +1,13 @@
 ---
-title: Albert O. Hirschman
+title: "Albert O. Hirschman"
 type: heritage
-kind: person
-parent: "[[Economic Geography]]"
-branch: economics
-year:
-status: confirmed
-why: Founding father of development economics.
-url: ""
-stage: seedling
-summary: Founding father of development economics.
+heritage_type: "person"
+branches:
+  - branch: "The Broken Tower"
+    sub_branch: "Agency and development"
+profession: "Economist"
+short_hook: "Exit, Voice, and Loyalty — the triad of response to decline"
+nominated_by: ["alberto"]
+status: "agreed"
 ---
-
-Hirschman was a "worldly philosopher", a high theorists that nevertheless started as a resistance fighter in Nazi-occupied Europe doing World War II and remained engaged with the world "out there" throughout his career, both in science and in activism. At Princeton's Institute for Advanced Study, he befriended senior anthropologist Clifford Geertz; the two worked at the project of a unified social science.
+Albert O. Hirschman's *Exit, Voice, and Loyalty* provides the Lab with a triad for understanding how people respond when institutions fail: leave (exit), speak up (voice), or stay silent (loyalty). The Lab uses this to design participatory processes that expand the space for voice before exit becomes the only option.
