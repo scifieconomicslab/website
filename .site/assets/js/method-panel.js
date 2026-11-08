@@ -1,4 +1,4 @@
-/* Panel two: the method statechart, drawn as you scroll. Content comes from method/*.md. */
+/* The method flowchart, drawn in full. Content comes from method/*.md. */
 (function () {
   'use strict';
   var host = document.getElementById('msvg'); if (!host) return;
@@ -65,10 +65,10 @@
   var EDGES = [
     { id: 'e12', d: 'M131 330 L155 330', need: 2, stepFrom: 1, stepTo: 2 },
     { id: 'e23', d: 'M281 330 L305 330', need: 3, stepFrom: 2, stepTo: 3 },
-    { id: 'e34', d: 'M368 268 L368 184', need: 4, stepFrom: 3, stepTo: 4, labPos: [358, 232, 'end'] },
-    { id: 'e42', d: 'M305 120 C250 120 218 190 218 266', need: 4, late: true, stepFrom: 4, stepTo: 2, labPos: [236, 214, 'start'] },
-    { id: 'e3a', d: 'M431 318 C470 318 450 200 497 200', need: 5, stepFrom: 3, stepTo: 5, labPos: [478, 178, 'middle'] },
-    { id: 'e3b', d: 'M431 342 C470 342 450 460 497 460', need: 5, stepFrom: 3, stepTo: 5, labPos: [478, 494, 'middle'] },
+    { id: 'e34', d: 'M368 268 L368 184', need: 4, stepFrom: 3, stepTo: 4, labPos: [380, 212, 'start'] },
+    { id: 'e42', d: 'M305 120 C250 120 218 190 218 266', need: 4, late: true, stepFrom: 4, stepTo: 2, labPos: [208, 150, 'end'] },
+    { id: 'e3a', d: 'M431 318 C470 318 450 200 497 200', need: 5, stepFrom: 3, stepTo: 5, labPos: [462, 172, 'middle'] },
+    { id: 'e3b', d: 'M431 342 C470 342 450 460 497 460', need: 5, stepFrom: 3, stepTo: 5, labPos: [462, 500, 'middle'] },
     { id: 'e5a6', d: 'M653 200 C710 200 690 318 707 318', need: 6, stepFrom: 5, stepTo: 6 },
     { id: 'e5b6', d: 'M653 460 C710 460 690 342 707 342', need: 6, stepFrom: 5, stepTo: 6 },
     { id: 'e67a', d: 'M833 318 C890 318 870 200 887 200', need: 7, stepFrom: 6, stepTo: 7 },
@@ -78,7 +78,6 @@
     { id: 'e89', d: 'M1130 268 L1130 184', need: 9, stepFrom: 8, stepTo: 9, labPos: [1118, 232, 'end'] },
     { id: 'eloop', d: 'M1067 120 C850 14 250 14 68 266', need: 9, late: true, dash: true, labPos: [570, 34, 'middle'] }
   ];
-  var RUSH = 'M218 394 C218 590 1130 590 1130 394';
 
   function el(n, a, p, t) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (t != null) e.textContent = t; if (p) p.appendChild(e); return e; }
   host.innerHTML = '';
@@ -89,24 +88,6 @@
   var mk = el('marker', { id: 'arr', viewBox: '0 0 10 10', refX: '8', refY: '5', markerWidth: '7', markerHeight: '7', orient: 'auto-start-reverse' }, defs);
   el('path', { d: 'M1 1L9 5L1 9', fill: 'none', stroke: 'context-stroke', 'stroke-width': '1.8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, mk);
   var g = el('g', { filter: 'url(#wobble)' }, host);
-  var edgeEls = {}, labEls = {};
-  EDGES.forEach(function (e) {
-    var a = { d: e.d, class: 'edge', 'marker-end': 'url(#arr)' }; if (e.dash) a['stroke-dasharray'] = '6 5';
-    edgeEls[e.id] = el('path', a, g);
-    if (e.lab) labEls[e.id] = el('text', { x: e.lab[0], y: e.lab[1], class: 'elab', style: 'text-anchor:' + e.lab[2] }, g, e.lab[3]);
-  });
-  var rush = el('path', { d: RUSH, class: 'edge rush', 'marker-end': 'url(#arr)' }, g);
-  var chips = [];
-  [['Skipped the test', 400, 560], ['Skipped the story', 950, 560]].forEach(function (c) {
-    var w = c[0].length * 8 + 22;
-    chips.push(el('rect', { x: c[1] - w / 2, y: c[2] - 14, width: w, height: 26, rx: 13, class: 'chipbg' }, host));
-    chips.push(el('text', { x: c[1], y: c[2] + 4, 'text-anchor': 'middle', class: 'chip' }, host, c[0]));
-  });
-  function wrapLabel(t) {
-    var words = t.split(' '), lines = [], cur = '';
-    words.forEach(function (w) { if (cur && (cur + ' ' + w).length > 15) { lines.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); });
-    lines.push(cur); return lines;
-  }
   var byStep = {}; steps.forEach(function (s) { byStep[s.step] = s; });
   // Populate edge labels from steps data (edge_label frontmatter)
   EDGES.forEach(function (e) {
@@ -122,6 +103,26 @@
   // Special case for eloop label (not in notes)
   var eloop = EDGES.find(function (e) { return e.id === 'eloop'; });
   if (eloop && eloop.labPos) eloop.lab = [eloop.labPos[0], eloop.labPos[1], eloop.labPos[2], 'a new problem surfaces'];
+  function wrapAt(t, max) {
+    var lines = [], cur = '';
+    t.split(' ').forEach(function (w) { if (cur && (cur + ' ' + w).length > max) { lines.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); });
+    lines.push(cur); return lines;
+  }
+  var edgeEls = {}, labEls = {};
+  EDGES.forEach(function (e) {
+    var a = { d: e.d, class: 'edge', 'marker-end': 'url(#arr)' }; if (e.dash) a['stroke-dasharray'] = '6 5';
+    edgeEls[e.id] = el('path', a, g);
+    if (e.lab) {
+      var t = el('text', { x: e.lab[0], y: e.lab[1], class: 'elab', style: 'text-anchor:' + e.lab[2] }, g);
+      wrapAt(e.lab[3], 15).forEach(function (ln, i) { el('tspan', { x: e.lab[0], dy: i ? '13' : '0' }, t, ln); });
+      labEls[e.id] = t;
+    }
+  });
+  function wrapLabel(t) {
+    var words = t.split(' '), lines = [], cur = '';
+    words.forEach(function (w) { if (cur && (cur + ' ' + w).length > 15) { lines.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); });
+    lines.push(cur); return lines;
+  }
   var nodeEls = {};
   NODES.forEach(function (n) {
     var s = byStep[n.step]; if (!s) return;
@@ -140,7 +141,6 @@
     function open() { showCard(s); }
     gg.addEventListener('click', open); gg.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
   });
-  var pulse = el('circle', { cx: -50, cy: -50, r: 7, class: 'pulse' }, host);
   var card = document.getElementById('mcard');
   function showCard(s) {
     var root = document.querySelector('script[data-root]').getAttribute('data-root');
@@ -149,72 +149,8 @@
   }
   document.addEventListener('click', function (e) { if (!e.target.closest('.node') && !e.target.closest('.mcard')) card.classList.remove('on'); });
 
-  // static list for reduced motion
-  var list = document.getElementById('mlist');
-  if (list) list.innerHTML = steps.map(function (s) { return '<li><b>' + esc(s.label) + '.</b> ' + esc(s.summary) + '</li>'; }).join('');
-
-  // CAPS built from steps data: each entry is [scrollThreshold, title, body]
-  var capThresholds = [0, 0.08, 0.20, 0.33, 0.43, 0.52, 0.60];
-  var CAPS = steps.map(function (s, i) {
-    return [capThresholds[i] || i * 0.1, s.caption_title, s.caption_body];
-  });
-  // Add the formal verification caption at the end
-  CAPS.push([0.78, 'We checked the core of this formally. A shortcut breaks both of our rules within two steps.', 'In the checked model, skipping the test and the story gets you a commitment nobody examined.']);
-  var capEl = document.getElementById('mcap'), prog = document.getElementById('mprog');
-  prog.innerHTML = CAPS.map(function () { return '<i></i>'; }).join('');
-  var sec = document.getElementById('method'), lastKey = '';
-  function p() {
-    var r = sec.getBoundingClientRect(), vh = window.innerHeight, top = document.querySelector('.top').offsetHeight;
-    var st = sec.querySelector('.stick');
-    st.style.top = Math.max(top, Math.round((vh + top - st.offsetHeight) / 2)) + 'px';
-    var pin = parseFloat(st.style.top);
-    var total = r.height - st.offsetHeight;
-    return Math.max(0, Math.min(1, (pin - r.top) / total));
-  }
-  function show(el, on) { el.classList.toggle('on', on); }
-  var VIS = { 1: 0, 2: .08, 3: .15, 4: .24, 5: .34, 6: .44, 7: .53, 8: .60, 9: .66 };
-  var HAPPY = ['1', '2', '3', '5a', '6', '7a', '8', '9'];
-  function update() {
-    var v = p(), reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) v = 0.70;
-    NODES.forEach(function (n) { if (nodeEls[n.id]) show(nodeEls[n.id], v >= VIS[n.step]); });
-    EDGES.forEach(function (e) {
-      var on = v >= VIS[e.need] + 0.02 && (!e.late || v >= (e.id === 'eloop' ? 0.72 : 0.30));
-      show(edgeEls[e.id], on); if (labEls[e.id]) show(labEls[e.id], on);
-    });
-    show(rush, v >= 0.78 && !reduce); chips.forEach(function (c) { show(c, v >= 0.82 && !reduce); });
-    var ci = 0; CAPS.forEach(function (c, i) { if (v >= c[0]) ci = i; });
-    var key = ci + ''; if (key !== lastKey) { lastKey = key; capEl.innerHTML = CAPS[ci][1] + '<small>' + CAPS[ci][2] + '</small>'; }
-    $all(prog.children).forEach(function (d, i) { d.classList.toggle('on', i <= ci); });
-    // a pulse runs the happy path once between 0.66 and 0.77
-    if (v >= 0.66 && v < 0.78 && !reduce) {
-      var path = HAPPY.map(function (id) { return POS[id]; });
-      var q = (v - 0.66) / 0.11 * (path.length - 1), i = Math.max(0, Math.min(path.length - 2, Math.floor(q))), f = Math.min(1, q - i);
-      pulse.setAttribute('cx', path[i][0] + (path[i + 1][0] - path[i][0]) * f); pulse.setAttribute('cy', path[i][1] + (path[i + 1][1] - path[i][1]) * f);
-    } else { pulse.setAttribute('cx', -50); pulse.setAttribute('cy', -50); }
-  }
-  function $all(x) { return Array.prototype.slice.call(x); }
-  var tick = false;
-  window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; update(); }); } }, { passive: true });
-  window.addEventListener('resize', update); update();
-
-  // Scroll hint to indicate interactivity
-  (function () {
-    var mfig = document.querySelector('.mfig');
-    if (!mfig) return;
-    var hint = document.createElement('div');
-    hint.id = 'scroll-hint';
-    hint.style.cssText = 'position:absolute;left:50%;bottom:24px;transform:translateX(-50%);font:500 13px var(--mono);color:var(--mute);pointer-events:none;opacity:1;transition:opacity .5s;z-index:10;white-space:nowrap';
-    hint.textContent = '\u2193 Scroll to explore';
-    mfig.appendChild(hint);
-    var removed = false;
-    window.addEventListener('scroll', function onScroll() {
-      if (window.scrollY > 100 && !removed) {
-        removed = true;
-        hint.style.opacity = '0';
-        setTimeout(function () { hint.remove(); }, 500);
-        window.removeEventListener('scroll', onScroll);
-      }
-    }, { passive: true });
-  })();
+  // everything is visible at once
+  Object.keys(nodeEls).forEach(function (k) { nodeEls[k].classList.add('on'); });
+  Object.keys(edgeEls).forEach(function (k) { edgeEls[k].classList.add('on'); });
+  Object.keys(labEls).forEach(function (k) { labEls[k].classList.add('on'); });
 })();

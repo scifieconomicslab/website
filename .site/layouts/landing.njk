@@ -100,13 +100,10 @@ layout: base.njk
   {% endfor %}
 </div></section>
 
-<section class="method" id="method" aria-label="How we work with a place">
-  <div class="stick">
-    <div class="say"><div class="eyebrow">How we work</div><div class="mname">{{ 'copy/process-name.md' | noteBody(page.url) | safe }}</div><div class="cap" id="mcap"></div><div class="prog" id="mprog"></div></div>
-    <div class="mfig"><svg id="msvg" viewBox="0 0 1220 600" role="img" aria-label="Flowchart: a place chooses its economy"></svg><div class="mcard" id="mcard"></div></div>
-  </div>
-  <div class="wrap mstatic"><ol id="mlist"></ol></div>
-</section>
+<section class="method" id="method" aria-label="How we work with a place"><div class="wrap">
+  <div class="mname">{{ 'copy/process-name.md' | noteBody(page.url) | safe }}</div>
+  <div class="mfig"><svg id="msvg" viewBox="0 0 1220 600" role="img" aria-label="Flowchart: a place chooses its economy"></svg><div class="mcard" id="mcard"></div></div>
+</div></section>
 
 <section class="s" id="work"><div class="wrap">
   <div class="eyebrow">Our work</div>
