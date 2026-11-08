@@ -7,7 +7,7 @@ layout: base.njk
     <h1>{{ hero_title }}</h1>
     <p class="lede">{{ hero_lede }}</p>
     <ul>{% for p in hero_points %}<li>{{ p }}</li>{% endfor %}</ul>
-    <div class="btns"><a class="btn" href="#run">Run the town</a><a class="btn alt" href="mailto:{{ site.contact }}?subject=A%20town%20and%20a%20problem">Bring us a town</a></div>
+    <div class="btns"><a class="btn" href="#run">Run the town</a><a class="btn alt" href="{{ '/models/linden-cove/' | rel(page.url) }}">What is this?</a></div>
   </div>
   <div class="fig" id="figbox">
     <iframe id="fig" title="{{ site.town_name }}, a small town you can run" loading="eager"></iframe>

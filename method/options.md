@@ -8,6 +8,8 @@ edge_label: ["we build a model you can run"]
 tone: sky
 stage: sapling
 status: working
+caption_title: "Then we lay out the options."
+caption_body: "Each option is a rule the town could pick. We build a small model with sliders so the room can try them."
 summary: "We generate options – things we could do, or not. Complexity economic thinking helps us come up with more diverse ones. Rarely, if ever, will there be only one alternative."
 ---
 

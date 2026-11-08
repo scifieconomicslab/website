@@ -8,6 +8,8 @@ edge_label: ["we name the problem together"]
 tone: rust
 stage: sapling
 status: working
+caption_title: "A place starts with something it feels."
+caption_body: "People name the problem together, in their own words, before anyone builds anything."
 summary: "We could be facing a problem, such as depopulation, poor access to public services or a degraded environment. Or we could just aspire to a better life. People name the destination together in their own words before anything gets built."
 ---
 
