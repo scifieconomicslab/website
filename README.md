@@ -6,17 +6,6 @@ The public website for the [Science Fiction Economics Lab](https://scifieconomic
 
 ---
 
-## What this is
-
-The Lab helps places design local economies that put people and planet first. We combine:
-
-- **Complexity economics** — models you can run with sliders, grounded in causal loops, not equilibrium assumptions
-- **Speculative fiction** — narratives that render policy choices into daily life, so stakeholders can *feel* the trade-offs
-- **Participatory process** — generative ethnography: the place names the problem, we lay out options, the model shows consequences, stories make them tangible, the town decides
-
-This repository contains the **website** — a living document of our methods, models, work, heritage, and team.
-
----
 
 ## Quick start
 
@@ -203,7 +192,3 @@ npm run build
 Content © Sci-Fi Economics Lab. Code MIT-licensed unless otherwise noted.
 
 ---
-
-## Contact
-
-**hello@scifieconomicslab.net** — bring us your problems.
