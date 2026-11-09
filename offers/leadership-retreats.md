@@ -7,5 +7,3 @@ summary: "A few days for a council or ministry to run the model of its own probl
 ---
 
 A few days for a council or ministry to run the model of its own problem and live in the story.
-
-The Work with us section on the landing page gives one contact address. It takes no payments.

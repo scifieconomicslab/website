@@ -1,11 +1,9 @@
 ---
 title: "Research participation"
 type: offer
-stage: seedling
+stage: evergreen
 status: speculative
-summary: "Join a running study with a model you can run, with sliders, and a story set in the same world."
+summary: "Partner with us on participatory research projects. Bring to your inquiry rapid simulation modelling, large-scale ethnography and science fiction narrative to explore alternative futures."
 ---
 
-Join a running study with a model you can run, with sliders, and a story set in the same world.
-
-The Work with us section on the landing page gives one contact address. It takes no payments.
+Partner with us on participatory research projects. Bring to your inquiry rapid simulation modelling, large-scale ethnography and science fiction narrative to explore alternative futures.

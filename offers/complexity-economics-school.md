@@ -1,11 +1,11 @@
 ---
-title: "A complexity-economics school"
+title: "The school of future places"
 type: offer
-stage: seedling
+stage: sapling
 status: speculative
-summary: "A course in economies as complex adaptive systems, with models to run and fiction to read."
+summary: "With our partners and allies we organize a School of Complexity Economics for Place-Based Human Development. Expect bold economic ideas. And science fiction."
 ---
 
-A course in economies as complex adaptive systems, with models to run and fiction to read.
+With our partners and allies we organize a School of Complexity Economics for Place-Based Human Development. Expect bold economic ideas. And science fiction.
 
-The Work with us section on the landing page gives one contact address. It takes no payments.
+

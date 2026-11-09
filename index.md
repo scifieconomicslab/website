@@ -2,7 +2,7 @@
 title: Sci-Fi Economics Lab
 layout: landing.njk
 eyebrow: A research lab for economic futures
-hero_title: Economic systems are the result of choice. What will you choose?
+hero_title: Economic systems result from choice.\n What will you choose?
 hero_lede: We support the design of local economies that put people and planet first. 
 hero_points:
   - Models you can run, with sliders, built on complexity economics.
