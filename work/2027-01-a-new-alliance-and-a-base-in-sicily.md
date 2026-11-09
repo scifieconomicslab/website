@@ -7,7 +7,7 @@ summary: "The Lab joins a new policy research and human development centre and s
 period: "2027"
 start: 2027-01
 kind: partnership
-who: "The Lab, Fondazione di Comunita Messina"
+who: "The Lab, Fondazione di Comunità Messina"
 motif: bridge
 why_it_matters: "Shows where the Lab is heading next: a standing institutional home for place-based work."
 featured: false
