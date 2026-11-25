@@ -29,16 +29,16 @@ The Lab co-convenes the series, and Yudhanjaya Wijeratne brings speculative thin
 | 19 Nov 2026 | Humanity and the Butterfly: Climate Change and Global Interdependence | Filippo Giorgi, physicist and climatologist, former IPCC Bureau member | Yildirim Beyazit Tuba, University of Ankara and the Convention on the Rights of the Mediterranean |
 | 26 Nov 2026 | Numbers and Limits: Population and the Environment | Massimo Livi Bacci, demographer, Honorary President of IUSSP | Enrique Gallicchio, CLAEH University, Montevideo |
 | 11 Dec 2026 | Metamorphosis | Edgar Morin, in a lecture recorded before his death | Samuel Barco Serrano, SOKIO; Juan de Dios Garcia Serrano, Pablo de Olavide University |
-| 22 Jan 2027 | A new economy | Olivier De Schutter, Chair of NEEP and former UN Special Rapporteur on extreme poverty; Sandrine Dixson-Decleve, Executive Chair of Earth4All | None listed |
+| 22 Jan 2027 | A new economy | Olivier De Schutter, Chair of NEEP and former UN Special Rapporteur on extreme poverty; Sandrine Dixson-Decleve, Executive Chair of Earth4All; Jo Swinson, CEO of Partners 4 a New Economy | None, panel discussion between the three main speakers |
 
-The organisers also invite practitioners to apply to speak and set no fixed criteria. The foundation's Horcynus Festival that summer, from 18 July to 12 August 2026, ran under the title Eutopie, Un pianeta, una umanita, so the series continues a theme the foundation had already taken public.
+The organisers also invite practitioners to apply to speak and set no fixed criteria. The foundation's Horcynus Festival that summer, from 18 July to 12 August 2026, ran under the title Eutopie, Un pianeta, una umanità, so the series continues a theme the foundation had already taken public.
 
 ## How it turned out
 
-The first session has not yet happened, so there is nothing to report. For a partner, the series is the place to see the Lab in public: a science fiction writer in the room with a climatologist, a demographer and economists, asked what each long wave looks like when someone has to live through it.
+The series is ongoing at the time of writing. For a partner, the series is the place to see the Lab in public: a science fiction writer in the room with a climatologist, a demographer and economists, asked what each long wave looks like when someone has to live through it.
 
 ## Sources
 
 - [One Planet, One Humanity: global webinar series, Fondazione di Comunita Messina](https://fdcmessina.org/2026/10/19/one-planet-one-humanity-global-webinar-series/)
-- [Eutopie: Un pianeta, una umanita, Horcynus Festival 2026](https://fdcmessina.org/2026/07/15/eutopie-un-pianeta-una-umanita-dal-18-luglio-al-12-agosto-torna-lhorcynus-festival/)
+- [Eutopie: Un pianeta, una umanità, Horcynus Festival 2026](https://fdcmessina.org/2026/07/15/eutopie-un-pianeta-una-umanita-dal-18-luglio-al-12-agosto-torna-lhorcynus-festival/)
 - [One planet, one humanity, on the Lab site](https://scifieconomicslab.net/one-planet-one-humanity/)
