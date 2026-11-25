@@ -21,11 +21,11 @@ nominated_by: ["alberto"]
 heritage_status: "agreed"
 ---
 
-Alberto Cottica is an economist and network scientist who works with the United Nations Development Programme. He specialises in online collaboration, collective intelligence and participatory, networked organisations, has worked with governments and intergovernmental organisations, cofounded the research collective Edgeryders and has done civic hacking with Spaghetti Open Data. He is also a former rock musician. His research looks at online communities as networks that can be read as data. His papers on semantic social networks, digital ethnography and the signature of community management appeared between 2016 and 2023, including two in Applied Network Science. He sits in the leadership group at Edgeryders with a data science role, and the UNDP lists him as an R&D Specialist in its Accelerator Labs.
+Alberto Cottica is an economist and network scientist. He specialises in online collaboration, collective intelligence and participatory, networked organisations. He has worked for the United Nations Development Programme, the Council of Europe, and Italy's Ministry of economic development. He cofounded the research collective Edgeryders and Spaghetti Open Data, Italy's first open data community. His [[work/2017-01-network-papers-on-online-communities|recent research]] looks at online communities as networks that can be read as data. His papers on semantic social networks, digital ethnography and the signature of community management appeared between 2017 and 2023, including two in Applied Network Science. He is also a former rock musician. 
 
 ## What they bring
 
-Participatory research community, network methods, coalition building, access to the global constituency for deep economic reform.
+Economic analysis, participatory research, network- and data science methods, coalition building, access to the global constituency for deep economic reform.
 
 ## In the heritage tree
 
